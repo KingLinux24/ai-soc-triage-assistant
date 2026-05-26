@@ -45,7 +45,7 @@ An automated, defensive cyber security workflow that ingests, normalizes, correl
   │     ──► Distributed API Gateway (FastAPI) & Operator UI (Streamlit)      │
   └──────────────────────────────────────────────────────────────────────────┘
 
-
+```
 ### 1. Ingestion & Normalization
 Disparate infrastructure components record telemetry using completely independent semantics (`message`, `path`, status codes). The parser processes those components into a **Canonical Common Schema** (`docs/schemas/normalized_event.json`), ensuring down-stream data parsing features can rely on predictable typing and keys regardless of source log origins.
 
