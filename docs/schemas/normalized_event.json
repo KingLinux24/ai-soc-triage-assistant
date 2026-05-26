@@ -1,0 +1,13 @@
+{
+  "timestamp": "ISO-8601 string",
+  "source": "auth|web|fw|endpoint|other",
+  "host": "string",
+  "user": "string|null",
+  "src_ip": "string|null",
+  "dst_ip": "string|null",
+  "event_type": "string",
+  "action": "string|null",
+  "status": "success|failure|info|null",
+  "severity_hint": "low|medium|high|null",
+  "raw": "object"
+}
