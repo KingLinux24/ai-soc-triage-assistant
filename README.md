@@ -9,23 +9,41 @@ An automated, defensive cyber security workflow that ingests, normalizes, correl
 
 ## Architecture Flow & Strategy
 
-[Raw Security Logs]
-(Auth, Web, Firewall)
-│
-▼
-[Normalization]    ──► Standardizes disparate streams to Canonical Common JSON Schema
-│
-▼
-[Correlation]      ──► Rule-based Time-Windowed Tracking Aggregation (Sliding Window Strategy)
-│
-▼
-[Triage Matrix]   ──► MITRE ATT&CK Tagging & Algorithmic Severity/Confidence Calculation
-│
-▼
-[Case File Generation]──► Dual Export: Automated Forensic Case Evidence (.json + .md)
-│
-▼
-[Presentation Layer] ──► Distributed API Gateway (FastAPI) & Operator Control UI (Streamlit)
+```text
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │                           Raw Security Logs                              │
+  │                 (Authentication, Web Streams, Firewall)                  │
+  └────────────────────────────────────┬─────────────────────────────────────┘
+                                       │
+                                       ▼
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │                            Normalization                                 │
+  │     ──► Standardizes disparate streams to Canonical Common JSON Schema   │
+  └────────────────────────────────────┬─────────────────────────────────────┘
+                                       │
+                                       ▼
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │                             Correlation                                  │
+  │     ──► Rule-based Time-Windowed Tracking (Sliding Window Strategy)      │
+  └────────────────────────────────────┬─────────────────────────────────────┘
+                                       │
+                                       ▼
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │                            Triage Matrix                                 │
+  │     ──► MITRE ATT&CK Tagging & Algorithmic Severity/Confidence Calculators│
+  └────────────────────────────────────┬─────────────────────────────────────┘
+                                       │
+                                       ▼
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │                         Case File Generation                             │
+  │     ──► Dual Export Assets: Automated Forensic Logs (.json + .md)        │
+  └────────────────────────────────────┬─────────────────────────────────────┘
+                                       │
+                                       ▼
+  ┌──────────────────────────────────────────────────────────────────────────┐
+  │                          Presentation Layer                              │
+  │     ──► Distributed API Gateway (FastAPI) & Operator UI (Streamlit)      │
+  └──────────────────────────────────────────────────────────────────────────┘
 
 
 ### 1. Ingestion & Normalization
