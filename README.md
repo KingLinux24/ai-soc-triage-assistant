@@ -79,46 +79,53 @@ The component assigns logical vector weights to calculated conditions:
 * Python 3.10 to 3.13 installed.
 
 ### Installation
-```bash
+```
 # 1. Clone & Navigate to Repository Root
 cd ai-soc-triage-assistant
-
+```
 # 2. Instantiate and Activate Virtual Environment
+```
 python -m venv .venv
 source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
-
+```
 # 3. Upgrade Pip and Install Dependencies
+```
 pip install -U pip
 pip install -r requirements.txt
 Execution Lifecycles
 Run the full operational execution pipeline linearly via the command line:
-
-Bash
+```
 # Generate synthetic dataset log tracks
+```
 python src/data/generate_sample_logs.py
-
+```
 # Standardize data to the schema target
+```
 python src/parsing/normalize.py
-
+```
 # Correlate tracks into behavioral events
+```
 python src/correlation/correlate.py
+```
 Accessing the Interfaces
 1. Operator Management UI Console (Streamlit)
 To ensure absolute paths resolve correctly from your workspace environment, start the Streamlit service with the explicit execution path mapping flag:
 
-Bash
+```
 PYTHONPATH=. streamlit run src/ui/app.py
+```
 2. FastAPI Engine Integration
 To launch the backend API engine interface layer:
 
-Bash
+```
 PYTHONPATH=. uvicorn src.api.app:app --reload --port 8000
+```
 Trigger processing via HTTP Request: curl "http://127.0.0.1:8000/run"
 
 Example Case File Output
 Below is an excerpt from a generated markdown case file (docs/cases/INC-3195434.md):
 
-Markdown
+
 # Incident Case File: INC-3195434
 
 ## 1. Automated Analysis Summary
